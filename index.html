@@ -11,12 +11,32 @@
 <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
+ 
+    <div class="input">
+        <input type="text" class="location">
+        <input type="submit" value="Submit">
+        <ul class="search-history">
+            
+        </ul>
+    </div>
+
+    <div class="display">
+        <h1 class= "city-date"></h1>
+        <p class="temperature"></p>
+        <p class="humidity"></p>
+        <p class="wind-speed"></p>
+        <p class="uv-index"></p>
+    </div>
+
+    <div class="five-day-display">
+        <h2>5-Day Forecast:</h2>
+        <div id="day-1" class="day"></div>
+        <div id="day-2" class="day"></div>
+        <div id="day-3" class="day"></div>
+        <div id="day-4" class="day"></div>
+        <div id="day-5" class="day"></div>
+    </div>
     
-
-    <!--API link-->
-
-    <!--link jQuery-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--JavaScript link-->
     <script src="script/script.js"></script>
 </body>
