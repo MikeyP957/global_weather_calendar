@@ -13,9 +13,9 @@ var dayCard = document.querySelector(".day")
 
 
 userSubmitBtn.addEventListener("click",function(){
-    fetch("api.openweathermap.org/data/2.5/forecast?q="+ inputLocation.value +"&appid="+ apiKey)
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation.value +"&appid="+ apiKey)
  .then(response => response.json())
  .then(data => console.log(data))
 
- .catch(err => alert("Wrong city"))
+ 
 } )
