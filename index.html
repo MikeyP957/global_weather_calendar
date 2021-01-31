@@ -11,30 +11,30 @@
 <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
- 
-    <div class="input">
-        <input type="text" class="location">
-        <input type="submit" value="Submit">
+ <header><h1>What's the Weather</h1></header>
+    <div class="input container">
+        <input type="text" class="location" placeholder="Enter a city">
+        <input type="submit" value="Submit" class= "button">
         <ul class="search-history">
-            
+
         </ul>
     </div>
 
-    <div class="display">
-        <h1 class= "city-date"></h1>
-        <p class="temperature"></p>
-        <p class="humidity"></p>
-        <p class="wind-speed"></p>
-        <p class="uv-index"></p>
+    <div class="display container">
+        <h3 class= "city-date">Vantage Wa 09/12/2020</h3>
+        <p class="temperature">75 degrees</p>
+        <p class="humidity">very dry</p>
+        <p class="wind-speed">no wind</p>
+        <p class="uv-index">6.2</p>
     </div>
 
-    <div class="five-day-display">
+    <div class="five-day-display container">
         <h2>5-Day Forecast:</h2>
-        <div id="day-1" class="day"></div>
-        <div id="day-2" class="day"></div>
-        <div id="day-3" class="day"></div>
-        <div id="day-4" class="day"></div>
-        <div id="day-5" class="day"></div>
+        <div id="day-1" class="day card">Thursday</div>
+        <div id="day-2" class="day card">Friday</div>
+        <div id="day-3" class="day card">Saturday</div>
+        <div id="day-4" class="day card">Sunday</div>
+        <div id="day-5" class="day card">Monday</div>
     </div>
     
     <!--JavaScript link-->
