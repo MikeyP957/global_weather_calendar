@@ -5,11 +5,7 @@
 var userSubmitBtn = document.querySelector(".button")
 var inputLocation = document.querySelector(".location")
 
-var cityAndDate = document.querySelector(".city-date")
-var temperature = document.querySelector(".temperature")
-var humidity = document.querySelector(".humidity")
-var windSpeed = document.querySelector(".wind-speed")
-var uvIndex = document.querySelector(".uv-index")
+var weatherToday = document.querySelector(".todaysWeather");
 var dayCard = document.querySelector(".day")
 
 
@@ -24,13 +20,18 @@ userSubmitBtn.addEventListener("click",function(){
             var cityName = data.city.name;
             var dateAndTime = data.list[0].dt_txt;
             var tempData = data.list[0].main.temp;
-            var himidityData = data.list[0].main.humidity;
+            var humidityData = data.list[0].main.humidity;
             var windSpeedData = data.list[0].wind.speed;
 
             var newDiv = document.createElement("div")
-            newDiv.innerHTML = "<p>" + tempData + "</p>"
+            newDiv.innerHTML = "<h3>" +cityName + " " + dateAndTime + "</h3>" +
+            "<p>Temperature: " + tempData + "</p> <br>" + 
+            "<p>Wind Speed: " + windSpeedData + "</p>" +
+            "<p>Humidity: " + humidityData + "</p> <br>" +
+            // "<p>UV Index: " + tempData + "</p> <br>"
+
             // cityAndDate.append(cityName + " " + dateAndTime)
-            temperature.appendChild(newDiv)
+            weatherToday.appendChild(newDiv)
             
 
         })
