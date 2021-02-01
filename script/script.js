@@ -53,12 +53,13 @@ userSubmitBtn.addEventListener("click",function(){
                 var humidityData = data.list[i].main.humidity;
                 var windSpeedData = data.list[i].wind.speed;
 
-                var newCard = document.createElement("div")
-                newCard.addClass("card")
+                var newCard = document.createElement("div");
+                newCard.classList.add("card");
+                newCard.classList.add("col-sm-2")
 
                 newCard.innerHTML = "<p>Temperature: " + tempData + "</p> <br>" + 
                 "<p>Wind Speed: " + windSpeedData + "</p>" +
-                "<p>Humidity: " + humidityData + "</p> <br>" +
+                "<p>Humidity: " + humidityData + "</p> <br>" //+
                 // "<p>UV Index: " + tempData + "</p> <br>"
     
                 // cityAndDate.append(cityName + " " + dateAndTime)
