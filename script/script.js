@@ -14,6 +14,14 @@ userSubmitBtn.addEventListener("click",function(){
         .then(function(response) {
             return response.json();
            })
+           //create the div for today's weather
+        //Create a function that gets all my objects/arrays and returns them as variables
+        //function that makes the main weather for that day
+        //function that makes weather prediction for 5 days
+            //append as cards
+            //use a for loop, the array would be index [8i-1], unless i = 0
+        //function that keeps local storage and appends as list
+        
 
         .then(function(data){
             console.log(data);
@@ -22,8 +30,8 @@ userSubmitBtn.addEventListener("click",function(){
             var tempData = data.list[0].main.temp;
             var humidityData = data.list[0].main.humidity;
             var windSpeedData = data.list[0].wind.speed;
-
             var newDiv = document.createElement("div")
+            
             newDiv.innerHTML = "<h3>" +cityName + " " + dateAndTime + "</h3>" +
             "<p>Temperature: " + tempData + "</p> <br>" + 
             "<p>Wind Speed: " + windSpeedData + "</p>" +
@@ -32,9 +40,32 @@ userSubmitBtn.addEventListener("click",function(){
 
             // cityAndDate.append(cityName + " " + dateAndTime)
             weatherToday.appendChild(newDiv)
-            
-
+           return data;
         })
+//a function that shows the weather for the future days
+        .then(function(data){
+            console.log(data, "future days data")
+            // for (i = 0; i < 4; i++){
+            //     //
+            // }
+            
+            // var cityName = data.city.name;
+            // var dateAndTime = data.list[0].dt_txt;
+            // var tempData = data.list[0].main.temp;
+            // var humidityData = data.list[0].main.humidity;
+            // var windSpeedData = data.list[0].wind.speed;
+
+            // var newDiv = document.createElement("div")
+            // newDiv.innerHTML = "<h3>" +cityName + " " + dateAndTime + "</h3>" +
+            // "<p>Temperature: " + tempData + "</p> <br>" + 
+            // "<p>Wind Speed: " + windSpeedData + "</p>" +
+            // "<p>Humidity: " + humidityData + "</p> <br>" +
+            // // "<p>UV Index: " + tempData + "</p> <br>"
+
+            // // cityAndDate.append(cityName + " " + dateAndTime)
+            // weatherToday.appendChild(newDiv)
+        })
+
         
         .catch(function(err){
             console.log("fetch problem: " + err.message)
