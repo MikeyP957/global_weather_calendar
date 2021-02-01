@@ -21,17 +21,23 @@ userSubmitBtn.addEventListener("click",function(){
 
         .then(function(data){
             console.log(data);
-            var cityName = city.name;
-            var tempData = list[0].main.temp;
-            var himidityData = list[0].main.humidity;
-            var windSpeedData = list[0].wind.speed;
+            var cityName = data.city.name;
+            var dateAndTime = data.list[0].dt_txt;
+            var tempData = data.list[0].main.temp;
+            var himidityData = data.list[0].main.humidity;
+            var windSpeedData = data.list[0].wind.speed;
 
+            var newDiv = document.createElement("div")
+            newDiv.innerHTML = "<p>" + tempData + "</p>"
+            // cityAndDate.append(cityName + " " + dateAndTime)
+            temperature.appendChild(newDiv)
             
 
         })
         
-        .catch(function(error){
-           return alert("Choose a city to search!");
+        .catch(function(err){
+            console.log("fetch problem: " + err.message)
+           
         })
  
 } )
