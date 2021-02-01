@@ -53,7 +53,8 @@ userSubmitBtn.addEventListener("click",function(){
                 var humidityData = data.list[i].main.humidity;
                 var windSpeedData = data.list[i].wind.speed;
 
-                var newCard = document.createElement("card")
+                var newCard = document.createElement("div")
+                newCard.addClass("card")
 
                 newCard.innerHTML = "<p>Temperature: " + tempData + "</p> <br>" + 
                 "<p>Wind Speed: " + windSpeedData + "</p>" +
