@@ -11,6 +11,7 @@ var dayCard = document.querySelector(".day")
 
 
 userSubmitBtn.addEventListener("click",function(){
+    // window.reload();
     fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation.value +"&appid="+ apiKey)
         .then(function(response) {
             return response.json();
@@ -31,18 +32,19 @@ userSubmitBtn.addEventListener("click",function(){
             var tempData = data.list[0].main.temp;
             var humidityData = data.list[0].main.humidity;
             var windSpeedData = data.list[0].wind.speed;
-            var newDiv = document.createElement("div")
-            
+
+            var newDiv = document.createElement("div");
+            newDiv.id = "weatherLocationNew"
             newDiv.innerHTML = "<h3>" +cityName + " " + dateAndTime + "</h3>" +
             "<p>Temperature: " + tempData + "</p> <br>" + 
             "<p>Wind Speed: " + windSpeedData + "</p>" +
-            "<p>Humidity: " + humidityData + "</p> <br>" +
+            "<p>Humidity: " + humidityData + "</p> <br>";
             // "<p>UV Index: " + tempData + "</p> <br>"
-
-            // cityAndDate.append(cityName + " " + dateAndTime)
+            
             weatherToday.appendChild(newDiv)
-           return data;
+                return data;
         })
+        
 //a function that shows the weather for the future days
         .then(function(data){
             console.log(data, "future days data")
@@ -61,9 +63,7 @@ userSubmitBtn.addEventListener("click",function(){
                 // cityAndDate.append(cityName + " " + dateAndTime)
                 weatherPredictions.appendChild(newCard)
                 console.log(tempData, "temp data for one day")
-            }
-            
-            
+            }       
 
 
 
