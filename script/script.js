@@ -7,11 +7,12 @@ var inputLocation = document.querySelector(".location")
 
 var weatherToday = document.querySelector(".todaysWeather");
 var weatherPredictions = document.querySelector(".five-day-display");
-var dayCard = document.querySelector(".day")
+var dayCard = document.querySelector(".day");
 
 
 userSubmitBtn.addEventListener("click",function(){
     // window.reload();
+    
     fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation.value +"&appid="+ apiKey)
         .then(function(response) {
             return response.json();
@@ -27,31 +28,48 @@ userSubmitBtn.addEventListener("click",function(){
 
         .then(function(data){
             console.log(data);
-            var cityName = data.city.name;
-            var dateAndTime = data.list[0].dt_txt;
-            var tempData = data.list[0].main.temp;
-            var humidityData = data.list[0].main.humidity;
-            var windSpeedData = data.list[0].wind.speed;
-
-            var newDiv = document.createElement("div");
-            newDiv.id = "weatherLocationNew"
-            newDiv.innerHTML = "<h3>" +cityName + " " + dateAndTime + "</h3>" +
-            "<p>Temperature: " + tempData + "</p> <br>" + 
-            "<p>Wind Speed: " + windSpeedData + "</p>" +
-            "<p>Humidity: " + humidityData + "</p> <br>";
-            // "<p>UV Index: " + tempData + "</p> <br>"
             
-            weatherToday.appendChild(newDiv)
-                return data;
+            var weatherCoordinates = {
+                latitude: data.city.coord.lat,
+                longitude: data.city.coord.lon,
+            };
+                console.log(weatherCoordinates.latitude, "latitude")
+                console.log(data, "this function returns weatherData")
+                return weatherCoordinates, data;
         })
+        // fetch("http://api.openweathermap.org/data/2.5/uvi?lat=" + weatherCoordinates.latitude.value + "&lon=" + weatherCoordinates.longitude.value + "&appid="+ apiKey)
+        // .then(function(response) {
+        //     return response.json();
+        //    })
+        //    .then(function(data){
+        //
+        //    })
+        .then(function(data){
+            weatherData = {
+                cityName: data.city.name,
+                dateAndTime:data.list[2].dt_txt,
+                tempData:data.list[2].main.temp,
+                windSpeedData: data.list[2].wind.speed ,
+                humidityData:data.list[2].main.humidity,
+            };
+        var newDiv = document.createElement("div");
+        newDiv.id = "weatherLocationNew"
+        newDiv.innerHTML = "<h3>" +weatherData.cityName + " " + weatherData.dateAndTime + "</h3>" +
+        "<p>Temperature: " + weatherData.tempData + "</p> <br>" + 
+        "<p>Wind Speed: " + weatherData.windSpeedData + "</p>" +
+        "<p>Humidity: " + weatherData.humidityData + "</p> <br>";
+        // "<p>UV Index: " + tempData + "</p> <br>"
         
+        weatherToday.appendChild(newDiv)
+        return data;
+        })
 //a function that shows the weather for the future days
         .then(function(data){
             console.log(data, "future days data")
             for (i = 1; i <= 5 ; i++){                
-                var tempData = data.list[i].main.temp;
-                var humidityData = data.list[i].main.humidity;
-                var windSpeedData = data.list[i].wind.speed;
+                var tempData = data.list[(8*i-1)].main.temp;
+                var humidityData = data.list[(8*i-1)].main.humidity;
+                var windSpeedData = data.list[(8*i-1)].wind.speed;
 
                 var newCard = document.createElement("div");
                 newCard.classList.add("card");
@@ -70,6 +88,7 @@ userSubmitBtn.addEventListener("click",function(){
 
 
         })
+
 
         
         .catch(function(err){
