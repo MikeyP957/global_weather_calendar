@@ -52,10 +52,14 @@ userSubmitBtn.addEventListener("click",function(){
                 windSpeedData: data.list[2].wind.speed ,
                 humidityData:data.list[2].main.humidity,
             };
+            
+            var tempDataF = Math.round(((weatherData.tempData) - 273.15)*9/5 + 32);
+           
+            console.log(tempDataF)
         var newDiv = document.createElement("div");
         newDiv.id = "weatherLocationNew"
         newDiv.innerHTML = "<h3>" +weatherData.cityName + " " + weatherData.dateAndTime + "</h3>" +
-        "<p>Temperature: " + weatherData.tempData + "</p> <br>" + 
+        "<p>Temperature: " + tempDataF + " degrees Farenheight</p> <br>" + 
         "<p>Wind Speed: " + weatherData.windSpeedData + "</p>" +
         "<p>Humidity: " + weatherData.humidityData + "</p> <br>";
         // "<p>UV Index: " + tempData + "</p> <br>"
@@ -71,18 +75,19 @@ userSubmitBtn.addEventListener("click",function(){
                 var humidityData = data.list[(8*i-1)].main.humidity;
                 var windSpeedData = data.list[(8*i-1)].wind.speed;
 
+                var tempFh = Math.round(((tempData) - 273.15)*9/5 + 32);
                 var newCard = document.createElement("div");
                 newCard.classList.add("card");
                 newCard.classList.add("col-sm-2")
 
-                newCard.innerHTML = "<p>Temperature: " + tempData + "</p> <br>" + 
+                newCard.innerHTML = "<p>Temperature: " + tempFh + " deg. F</p> <br>" + 
                 "<p>Wind Speed: " + windSpeedData + "</p>" +
                 "<p>Humidity: " + humidityData + "</p> <br>" //+
                 // "<p>UV Index: " + tempData + "</p> <br>"
     
                 // cityAndDate.append(cityName + " " + dateAndTime)
                 weatherPredictions.appendChild(newCard)
-                console.log(tempData, "temp data for one day")
+                console.log(tempFh, "temp data for one day")
             }       
 
 
