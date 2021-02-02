@@ -1,0 +1,9 @@
+body{
+    background-color: rgba(122, 167, 245, 0.892);
+}
+.button{
+    color: white;
+    background-color:darkblue;
+    border-radius: 25px;
+    text-emphasis: bold;
+}
