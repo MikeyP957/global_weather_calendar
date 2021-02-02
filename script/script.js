@@ -6,12 +6,13 @@ var userSubmitBtn = document.querySelector(".button")
 var inputLocation = document.querySelector(".location")
 
 var weatherToday = document.querySelector(".todaysWeather");
+console.log(weatherToday.value, "weatherToday Value");
 var weatherPredictions = document.querySelector(".five-day-display");
 var dayCard = document.querySelector(".day");
 
 
 userSubmitBtn.addEventListener("click",function(){
-    // window.reload();
+     
     
     fetch("https://api.openweathermap.org/data/2.5/forecast?q="+ inputLocation.value +"&units=imperial&appid="+ apiKey)
         .then(function(response) {
@@ -24,7 +25,9 @@ userSubmitBtn.addEventListener("click",function(){
             //append as cards
             //use a for loop, the array would be index [8i-1], unless i = 0
         //function that keeps local storage and appends as list
-        
+        // .then(function(){
+        //     if 
+        // })
 
         .then(function(data){
             console.log(data);
@@ -63,7 +66,14 @@ userSubmitBtn.addEventListener("click",function(){
         "<p>Wind Speed: " + weatherData.windSpeedData + " MPH</p>" +
         "<p>Humidity: " + weatherData.humidityData + "%</p> <br>";
         // "<p>UV Index: " + tempData + "</p> <br>"
-        
+        // if(weatherToday.value == 0){
+        //     weatherToday.appendChild(newDiv)        
+        //     return data;
+        // }
+        // else{
+        //     weatherToday.replace(document.getElementById("weatherLocationNew"), newDiv)        
+        //     return data;
+        // }
         weatherToday.appendChild(newDiv)
         return data;
         })
