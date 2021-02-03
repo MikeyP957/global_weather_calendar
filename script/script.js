@@ -37,9 +37,10 @@ userSubmitBtn.addEventListener("click",function(){
                 latitude: data.city.coord.lat,
                 longitude: data.city.coord.lon,
             };
-                console.log(weatherCoordinates.latitude, "latitude")
+                // console.log(weatherCoordinates.latitude, "latitude")
                 console.log(data, "this function returns weatherData")
-                                
+
+
             var weatherData = {
                 cityName: data.city.name,
                 dateAndTime:data.list[2].dt_txt,
@@ -51,13 +52,14 @@ userSubmitBtn.addEventListener("click",function(){
                         
                 
             var newDiv = document.createElement("div");
+            
             newDiv.id = "weatherLocationNew"
             newDiv.innerHTML = "<h3>" +weatherData.cityName + " " + weatherData.dateAndTime + "</h3>" +
             "<div class='icon'><img src='http://openweathermap.org/img/wn/"+ weatherData.weatherIcon + "@2x.png' alt='weather icon'></div>"
             "<p>Temperature: " + weatherData.tempData + " degrees Farenheight</p> <br>" + 
             "<p>Wind Speed: " + weatherData.windSpeedData + " MPH</p>" +
             "<p>Humidity: " + weatherData.humidityData + "%</p> <br>";
-            // "<p>UV Index: " + tempData + "</p> <br>"
+           // "<p>UV Index: " + tempData + "</p> <br>"
             // if(weatherToday.value == 0){
             //     weatherToday.appendChild(newDiv)        
             //     return data;
@@ -87,18 +89,22 @@ userSubmitBtn.addEventListener("click",function(){
     
                 // cityAndDate.append(cityName + " " + dateAndTime)
                 weatherPredictions.appendChild(newCard)
-                console.log(tempData, "temp data for one day")
+                // console.log(tempData, "temp data for one day")
             }
 
-
+            fetch("http://api.openweathermap.org/data/2.5/uvi?lat=" + weatherCoordinates.latitude + "&lon=" + weatherCoordinates.longitude + "&appid="+ apiKey)
+            .then(function(response){
+                console.log(response, "this is the uvi fetch")
+            })   
         })
-           
+          
+
         .catch(function(err){
             console.log("fetch problem: " + err.message)
            
         })
- 
+       
 } )
 
 
-// fetch("http://api.openweathermap.org/data/2.5/uvi?lat=" + weatherCoordinates.latitude + "&lon=" + weatherCoordinates.longitude + "&appid="+ apiKey)
+ 
