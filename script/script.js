@@ -4,6 +4,7 @@
 
 var userSubmitBtn = document.querySelector(".button")
 var inputLocation = document.querySelector(".location")
+// get from dop down in html and update in fetch var stateID = ,
 
 var weatherToday = document.querySelector(".todaysWeather");
 // console.log(weatherToday.value, "weatherToday Value");
@@ -52,7 +53,7 @@ userSubmitBtn.addEventListener("click",function(){
             var newDiv = document.createElement("div");
             newDiv.id = "weatherLocationNew"
             newDiv.innerHTML = "<h3>" +weatherData.cityName + " " + weatherData.dateAndTime + "</h3>" +
-            "<div class='icon'><img src='"+ weatherData.weatherIcon +".png' alt='weather icon'></div>"
+            "<div class='icon'><img src='http://openweathermap.org/img/wn/"+ weatherData.weatherIcon + "@2x.png' alt='weather icon'></div>"
             "<p>Temperature: " + weatherData.tempData + " degrees Farenheight</p> <br>" + 
             "<p>Wind Speed: " + weatherData.windSpeedData + " MPH</p>" +
             "<p>Humidity: " + weatherData.humidityData + "%</p> <br>";
