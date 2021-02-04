@@ -55,9 +55,7 @@ userSubmitBtn.addEventListener("click",function(){
             
             newDiv.id = "weatherLocationNew"
             newDiv.innerHTML = "<h3>" +weatherData.cityName + " " + weatherData.dateAndTime + "</h3>" +
-            "<div class='icon'><img src='http://openweathermap.org/img/wn/"+ weatherData.weatherIcon + "@2x.png' alt='weather icon'></div>"
-            "<p>Temperature: " + weatherData.tempData + " degrees Farenheight</p> <br>" + 
-            "<p>Wind Speed: " + weatherData.windSpeedData + " MPH</p>" +
+            "<div class='icon'><img src='http://openweathermap.org/img/wn/"+ weatherData.weatherIcon + "@2x.png' alt='weather icon'></div><p>Temperature: " + weatherData.tempData + " degrees Farenheight</p> <br>" + "<p>Wind Speed: " + weatherData.windSpeedData + " MPH</p>" +
             "<p>Humidity: " + weatherData.humidityData + "%</p> <br>";
            // "<p>UV Index: " + tempData + "</p> <br>"
             // if(weatherToday.value == 0){
@@ -76,14 +74,14 @@ userSubmitBtn.addEventListener("click",function(){
                 var tempData = data.list[(8*i-1)].main.temp;
                 var humidityData = data.list[(8*i-1)].main.humidity;
                 var windSpeedData = data.list[(8*i-1)].wind.speed;
+                var weatherIcon = data.list[(8*i-1)].weather[0].icon
 
                
                 var newCard = document.createElement("div");
                 newCard.classList.add("card");
                 newCard.classList.add("col-sm-2")
 
-                newCard.innerHTML = "<p>Temperature: " + tempData + " deg. F</p> <br>" + 
-                "<p>Wind Speed: " + windSpeedData + " MPH</p>" +
+                newCard.innerHTML = "<p>Temperature: " + tempData + " deg. F</p> <br>" + "<div class='icon'><img src='http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png' alt='weather icon'></div><p>Wind Speed: " + windSpeedData + " MPH</p>" +
                 "<p>Humidity: " + humidityData + "%</p> <br>" //+
                 // "<p>UV Index: " + tempData + "</p> <br>"
     

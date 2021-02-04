@@ -8,5 +8,6 @@ body{
     text-emphasis: bold;
 }
 .card{
+    margin:15px;
     background-color: hotpink !important; 
 }
