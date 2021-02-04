@@ -43,11 +43,12 @@ userSubmitBtn.addEventListener("click",function(){
             var newDiv = document.createElement("div");
             
             newDiv.id = "weatherLocationNew"
-            newDiv.innerHTML = "<h3>" +weatherData.cityName + " " + weatherData.dateAndTime + "</h3>" +
-            "<div class='icon'><img src='http://openweathermap.org/img/wn/"+ weatherData.weatherIcon + "@2x.png' alt='weather icon'></div><p>Temperature: " + weatherData.tempData + " degrees Farenheight</p> <br>" + "<p>Wind Speed: " + weatherData.windSpeedData + " MPH</p>" +
-            "<p>Humidity: " + weatherData.humidityData + "%</p> <br>"
+
+            newDiv.innerHTML = "<h3>" + weatherData.cityName + " " + weatherData.dateAndTime + "</h3>" +
+            "<div class='icon'><img src='http://openweathermap.org/img/wn/" + weatherData.weatherIcon + "@2x.png' alt='weather icon'></div><p>Temperature: " + weatherData.tempData + " degrees Farenheight</p> <br>" + "<p>Wind Speed: " + weatherData.windSpeedData + " MPH</p>" +
+            "<p>Humidity: " + weatherData.humidityData + "%</p><br>"
             
-            weatherToday.appendChild(newDiv)
+            weatherToday.appendChild(newDiv);
 
 
 // the data is recursive, each 8th index is a new day. There is no need for the initial index as it is already displayed
